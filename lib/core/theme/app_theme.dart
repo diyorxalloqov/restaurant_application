@@ -47,7 +47,7 @@ class AppTheme {
         brightness: Brightness.light,
         scaffoldBackgroundColor: scaffoldColor),
     pageTransitionsTheme: const PageTransitionsTheme(builders: {
-      TargetPlatform.android: OpenUpwardsPageTransitionsBuilder(),
+      TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
       TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
     }),
     cardTheme: CardTheme(color: cardColor),
@@ -102,8 +102,7 @@ class AppTheme {
         brightness: Brightness.dark,
         scaffoldBackgroundColor: scaffoldColorBlack),
     pageTransitionsTheme: const PageTransitionsTheme(builders: {
-      TargetPlatform.android:
-          OpenUpwardsPageTransitionsBuilder(), //FadeUpwardsPageTransitionsBuilder  ZoomPageTransitionsBuilder
+      TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
       TargetPlatform.iOS:
           CupertinoPageTransitionsBuilder(), //CupertinoFullScreenDialogTransitionBuilder
     }),

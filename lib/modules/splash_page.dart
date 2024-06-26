@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:restaurant_app/core/constants/assets/app_colors.dart';
-import 'package:restaurant_app/core/constants/assets/app_fontfamily.dart';
-import 'package:restaurant_app/core/constants/assets/app_fontweight.dart';
-import 'package:restaurant_app/core/constants/assets/app_images.dart';
-import 'package:restaurant_app/core/constants/assets/app_sizes.dart';
-import 'package:restaurant_app/core/lang/keys.dart';
+import 'package:restaurant_app/modules/global/imports/app_imports.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -14,12 +8,13 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  String routeName = 'bottom_nav_bar'; // 'login'
+  String routeName = // 'bottom_nav_bar';
+      'login';
 
   @override
   void initState() {
-    // Future.delayed(const Duration(seconds: 3))
-    //     .then((value) => Navigator.pushNamed(context, routeName));
+    Future.delayed(const Duration(seconds: 3))
+        .then((value) => Navigator.pushNamed(context, routeName));
     super.initState();
   }
 

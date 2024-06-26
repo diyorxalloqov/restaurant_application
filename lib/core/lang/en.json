@@ -1,3 +1,15 @@
 {
-    "app_name": "Restaurant"
+    "app_name": "Restaurant",
+    "loginHint": "Enter your personality",
+    "registerHint": "Enter your personality",
+    "nameHint": "Please enter your name",
+    "emailHint": "Please enter your email",
+    "passwordHint": "Please enter your password",
+    "googleSign": "Continue with google",
+    "loginDescription": "By continuing, you agree to receive calls or text messages from the Restaurant and its affiliates to the specified number, including through automated means.",
+    "registerDescription": "By continuing, you agree to receive calls or text messages from the Restaurant and its affiliates to the specified number, including through automated means.",
+    "register": "Register",
+    "login": "Login",
+    "or": "or",
+    "haveAccaunt": "Do you have an accaunt?"
 }
