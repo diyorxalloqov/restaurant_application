@@ -8,8 +8,10 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  String routeName = // 'bottom_nav_bar';
-      'login';
+  String routeName = StorageRepository.getBool(Keys.isEntered)
+      ? 'bottomNavBar' //'login
+      : 'onBoarding';
+  // 'login';
 
   @override
   void initState() {

@@ -99,7 +99,7 @@ class StorageRepository {
 
   /////// STRING
 
-  static String getString(String key, {String defValue = ''}) {
+  static String getString(String key, {String defValue = 'uz'}) {
     if (_preferences == null) return defValue;
     return _preferences!.getString(key) ?? defValue;
   }

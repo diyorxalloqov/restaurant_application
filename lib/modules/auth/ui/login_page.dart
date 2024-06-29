@@ -86,15 +86,20 @@ class _LoginPageState extends State<LoginPage> {
                   const SpaceHeight(height: 20),
                   Row(
                     children: [
-                      Expanded(child: Divider(color: dividerColor)),
+                      Expanded(child: Divider(color: authDividerColor)),
                       const SpaceWidth(width: 10),
                       Text(or, style: smallStyle),
                       const SpaceWidth(width: 10),
-                      Expanded(child: Divider(color: dividerColor))
+                      Expanded(child: Divider(color: authDividerColor))
                     ],
                   ),
                   const SpaceHeight(height: 12),
-                  MainButton(onPressed: () {}, text: login)
+                  MainButton(
+                      onPressed: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, 'bottomNavBar', (route) => false);
+                      },
+                      text: login)
                 ],
               ),
             ),

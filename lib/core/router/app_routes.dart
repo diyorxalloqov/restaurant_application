@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:restaurant_app/modules/auth/ui/login_page.dart';
-import 'package:restaurant_app/modules/auth/ui/register_page.dart';
-import 'package:restaurant_app/modules/bottom_nav_bar/bottom_nav_bar.dart';
-import 'package:restaurant_app/modules/splash_page.dart';
+import 'package:restaurant_app/modules/global/imports/app_imports.dart';
 
 class RouteList {
   static final RouteList _generate = RouteList._init();
@@ -15,12 +11,16 @@ class RouteList {
     switch (settings.name) {
       case '/':
         return _navigate(const SplashPage());
+      case 'onBoarding':
+        return _navigate(const OnBoardingPage());
       case 'login':
         return _navigate(const LoginPage());
       case 'register':
         return _navigate(const RegisterPage());
       case "bottomNavBar":
         return _navigate(const BottomNavBarPage());
+      case "locationPage":
+        return _navigate(const LocationPage());
     }
     return null;
   }
