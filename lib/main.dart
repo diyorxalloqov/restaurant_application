@@ -11,10 +11,14 @@ library;
  */
 
 import 'package:restaurant_app/modules/global/imports/app_imports.dart';
+import 'package:restaurant_app/modules/home/service/home_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
+  if (StorageRepository.getString(Keys.lang) == '') {
+    await StorageRepository.putString(Keys.lang, 'uz');
+  }
 
   runApp(EasyLocalization(
       saveLocale: true,
@@ -25,7 +29,6 @@ void main() async {
         Locale("ru"),
       ],
       path: "lib/core/lang",
-      fallbackLocale: const Locale('en'),
       child: const App()));
 
   // portraitUp (vertikal) rejimida bo'lishi uchun

@@ -81,7 +81,7 @@ class _DeliveryItemWidgetState extends State<DeliveryItemWidget> {
                                 children: [
                                   SvgPicture.asset(AppIcon.schedule_icon),
                                   const SpaceWidth(width: 10),
-                                  Text(scheduleOrder,
+                                  Text('scheduleOrder'.tr(),
                                       style: const TextStyle(
                                           fontSize: AppSizes.size_14,
                                           fontWeight: AppFontWeight.w_400))
@@ -89,9 +89,9 @@ class _DeliveryItemWidgetState extends State<DeliveryItemWidget> {
                               ),
                             ),
                           ),
-                          Text('$open 11:10',
+                          Text('${'open'.tr()} 11:10',
                               style: const TextStyle(
-                                color: Colors.white       ,
+                                  color: Colors.white,
                                   fontSize: AppSizes.size_14,
                                   fontWeight: AppFontWeight.w_700)),
                         ],

@@ -10,142 +10,209 @@ class LocationPage extends StatefulWidget {
 class _LocationPageState extends State<LocationPage> {
   bool isScheduled = false;
   int? selectedLocationIndex;
-  bool isCurrentLocation = true;
+  bool isCurrentLocation = StorageRepository.getBool(Keys.isCurrentlocation);
+  late TextEditingController _locationController;
+
+  @override
+  void initState() {
+    _locationController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _locationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    context.read<HomeBloc>().state.manualChoiceLocationModel?.results?.clear();
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
-        title: Text(address,
+        title: Text('address'.tr(),
             style: const TextStyle(
                 fontWeight: AppFontWeight.w_500, fontSize: AppSizes.size_20)),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-              leading:
-                  SvgPicture.asset(AppIcon.schedule, width: 24, height: 24),
-              title: Text(deliverNow,
-                  style: const TextStyle(
-                      fontSize: AppSizes.size_16,
-                      fontWeight: AppFontWeight.w_500)),
-              trailing: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isScheduled = !isScheduled;
-                  });
-                },
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  decoration: BoxDecoration(
-                      color: greyColor,
-                      borderRadius: BorderRadius.circular(99)),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(schedule,
-                          style: const TextStyle(
-                              fontWeight: AppFontWeight.w_500,
-                              fontSize: AppSizes.size_14)),
-                      const SpaceWidth(width: 5),
-                      isScheduled
-                          ? SvgPicture.asset(AppIcon.tick)
-                          : const SizedBox.shrink()
-                    ],
-                  ),
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ListTile(
+            leading: SvgPicture.asset(AppIcon.schedule, width: 24, height: 24),
+            title: Text('deliverNow'.tr(),
+                style: const TextStyle(
+                    fontSize: AppSizes.size_16,
+                    fontWeight: AppFontWeight.w_500)),
+            trailing: GestureDetector(
+              onTap: () {
+                setState(() {
+                  isScheduled = !isScheduled;
+                });
+              },
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                decoration: BoxDecoration(
+                    color: greyColor, borderRadius: BorderRadius.circular(99)),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('schedule'.tr(),
+                        style: const TextStyle(
+                            fontWeight: AppFontWeight.w_500,
+                            fontSize: AppSizes.size_14)),
+                    const SizedBox(width: 5),
+                    isScheduled
+                        ? SvgPicture.asset(AppIcon.tick)
+                        : const SizedBox.shrink()
+                  ],
                 ),
               ),
             ),
-            const SpaceHeight(height: 10),
-            Divider(color: dividerColor, thickness: 10),
-            const SpaceHeight(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(nearby,
-                      style: const TextStyle(
-                          fontWeight: AppFontWeight.w_500,
-                          fontSize: AppSizes.size_16)),
-                  const SpaceHeight(height: 8),
-                  TextFormField(
-                    decoration: InputDecoration(
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        filled: true,
-                        fillColor: context.isDark
-                            ? textFormFieldFillDarkColor
-                            : textFormFieldFillColor,
-                        suffix: InkWell(
-                          onTap: () {
-                            //! search function
-                            debugPrint('searching...');
-                          },
-                          child: Icon(Icons.search,
-                              color: context.isDark
-                                  ? searchIconDarkColor
-                                  : searchIconColor),
+          ),
+          const SizedBox(height: 10),
+          Divider(color: dividerColor, thickness: 10),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('nearby'.tr(),
+                    style: const TextStyle(
+                        fontWeight: AppFontWeight.w_500,
+                        fontSize: AppSizes.size_16)),
+                const SizedBox(height: 8),
+                TextFormField(
+                  controller: _locationController,
+                  decoration: InputDecoration(
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      filled: true,
+                      fillColor: context.isDark
+                          ? textFormFieldFillDarkColor
+                          : textFormFieldFillColor,
+                      suffix: InkWell(
+                        onTap: () {
+                          context.read<HomeBloc>().add(GetLocationManual(
+                              place: _locationController.text));
+                          debugPrint('searching...');
+                        },
+                        child: Icon(Icons.search,
+                            color: context.isDark
+                                ? searchIconDarkColor
+                                : searchIconColor),
+                      ),
+                      hintText: 'addressEnter'.tr()),
+                ),
+                Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    ListTile(
+                      leading: SvgPicture.asset(AppIcon.current_location),
+                      title: Text('currentLocation'.tr(),
+                          style: const TextStyle(
+                              fontSize: AppSizes.size_16,
+                              fontWeight: AppFontWeight.w_500)),
+                      trailing: GestureDetector(
+                        onTap: () async {
+                          setState(() {
+                            isCurrentLocation = !isCurrentLocation;
+                            selectedLocationIndex = -1;
+                            if (isCurrentLocation == true) {
+                              context.read<HomeBloc>().add(GetLocationIp());
+                              context.read<HomeBloc>().add(GetLocation());
+                            }
+                          });
+                          await StorageRepository.putBool(
+                              Keys.isCurrentlocation, isCurrentLocation);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 10),
+                          decoration: BoxDecoration(
+                              color: greyColor,
+                              borderRadius: BorderRadius.circular(99)),
+                          child: Text(
+                              isCurrentLocation
+                                  ? 'disable'.tr()
+                                  : 'enable'.tr(),
+                              style: const TextStyle(
+                                  fontWeight: AppFontWeight.w_500,
+                                  fontSize: AppSizes.size_14)),
                         ),
-                        hintText: addressEnter),
-                  ),
-                  Column(
-                    children: List.generate(15, (index) {
-                      if (index == 0) {
-                        return Column(
-                          children: [
-                            const SpaceHeight(height: 20),
-                            ListTile(
-                              leading:
-                                  SvgPicture.asset(AppIcon.current_location),
-                              title: Text(currentLocation,
-                                  style: const TextStyle(
-                                      fontSize: AppSizes.size_16,
-                                      fontWeight: AppFontWeight.w_500)),
-                              trailing: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isCurrentLocation = !isCurrentLocation;
-                                  });
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16, vertical: 10),
-                                  decoration: BoxDecoration(
-                                      color: greyColor,
-                                      borderRadius: BorderRadius.circular(99)),
-                                  child: Text(
-                                      isCurrentLocation ? disable : enable,
-                                      style: const TextStyle(
-                                          fontWeight: AppFontWeight.w_500,
-                                          fontSize: AppSizes.size_14)),
-                                ),
-                              ),
-                            ),
-                            Divider(thickness: 1, color: dividerColor)
-                          ],
-                        );
-                      }
+                      ),
+                    ),
+                    Divider(thickness: 1, color: dividerColor)
+                  ],
+                ),
+                BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+                  if (state.locationManualStatus == ActionStatus.isLoading) {
+                    return Center(
+                        child: Column(
+                      children: [
+                        SpaceHeight(height: context.height * .2),
+                        const CircularProgressIndicator(),
+                      ],
+                    ));
+                  } else if (state.locationManualStatus ==
+                      ActionStatus.isError) {
+                    return Center(
+                        child: Column(
+                      children: [
+                        SpaceHeight(height: context.height * .2),
+                        Text(state.locationManualError,
+                            style: const TextStyle(
+                                fontSize: AppSizes.size_16,
+                                fontWeight: AppFontWeight.w_500))
+                      ],
+                    ));
+                  } else if (state.locationManualStatus ==
+                      ActionStatus.isSuccess) {
+                    return Column(
+                        children: List.generate(
+                            state.manualChoiceLocationModel?.results?.length ??
+                                0, (index) {
                       return LocationItem(
                         isSelected: selectedLocationIndex == index,
-                        onTap: () {
+                        onTap: () async {
                           setState(() {
                             selectedLocationIndex = index;
+                            isCurrentLocation = false;
                           });
+                          context.read<HomeBloc>().add(GetLocation());
+                          await StorageRepository.putString(
+                              Keys.location,
+                              state.manualChoiceLocationModel?.results?[index]
+                                      .addressLine1 ??
+                                  '');
+                          await StorageRepository.putBool(
+                              Keys.isCurrentlocation, false);
                         },
+                        title: state.manualChoiceLocationModel?.results?[index]
+                                .addressLine1 ??
+                            '',
+                        subtitle: state.manualChoiceLocationModel
+                                ?.results?[index].addressLine2 ??
+                            '',
                       );
-                    }),
-                  )
-                ],
-              ),
+                    }));
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                })
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        ],
+      )),
     );
   }
 }
@@ -153,11 +220,15 @@ class _LocationPageState extends State<LocationPage> {
 class LocationItem extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
+  final String title;
+  final String subtitle;
 
   const LocationItem({
     super.key,
     required this.isSelected,
     required this.onTap,
+    required this.title,
+    required this.subtitle,
   });
 
   @override
@@ -171,14 +242,14 @@ class LocationItem extends StatelessWidget {
               : const SizedBox.shrink(),
           leading: SvgPicture.asset(AppIcon.location),
           subtitle: Text(
-            "CA",
+            subtitle,
             style: TextStyle(
                 color: itemSubtitleColor,
                 fontWeight: AppFontWeight.w_500,
                 fontSize: AppSizes.size_16),
           ),
-          title: Text('California',
-              style: TextStyle(
+          title: Text(title,
+              style: const TextStyle(
                   fontWeight: AppFontWeight.w_500, fontSize: AppSizes.size_16)),
         ),
         Divider(thickness: 1, color: dividerColor),

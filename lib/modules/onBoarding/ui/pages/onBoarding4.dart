@@ -1,4 +1,5 @@
 import 'package:restaurant_app/modules/global/imports/app_imports.dart';
+import 'package:restaurant_app/modules/home/bloc/home_bloc.dart';
 import 'package:restaurant_app/modules/onBoarding/ui/widgets/on_boarding_button.dart';
 
 class OnBoarding4 extends StatelessWidget {
@@ -17,7 +18,7 @@ class OnBoarding4 extends StatelessWidget {
           const SizedBox.shrink(),
           Column(
             children: [
-              Text(onBoarding4,
+              Text('onBoarding4'.tr(),
                   style: const TextStyle(
                       color: Colors.white,
                       fontWeight: AppFontWeight.w_700,
@@ -25,7 +26,7 @@ class OnBoarding4 extends StatelessWidget {
               const SpaceHeight(height: 50),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 47),
-                child: Text(onBoarding4des,
+                child: Text('onBoarding4des'.tr(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: Colors.white,
@@ -37,10 +38,12 @@ class OnBoarding4 extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(bottom: context.bottom / 9 + 70),
             child: OnBoardingButton(
-                text: start,
+                text: 'start'.tr(),
                 onTap: () async {
+                  context.read<HomeBloc>().add(GetLocationIp());
                   Navigator.pushNamed(context, 'login');
                   await StorageRepository.putBool(Keys.isEntered, true);
+                  await StorageRepository.putBool(Keys.isCurrentlocation, true);
                 }),
           )
         ],

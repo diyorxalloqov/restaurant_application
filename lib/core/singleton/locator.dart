@@ -1,7 +1,5 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:get_it/get_it.dart';
-import 'package:restaurant_app/core/db/shared/shared_preferences.dart';
-import 'package:restaurant_app/core/singleton/dio.dart';
+import 'package:restaurant_app/modules/global/imports/app_imports.dart';
 
 final serviceLocator = GetIt.I;
 

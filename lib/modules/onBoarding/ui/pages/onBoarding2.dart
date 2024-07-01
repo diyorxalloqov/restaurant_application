@@ -17,7 +17,7 @@ class OnBoarding2 extends StatelessWidget {
           const SizedBox.shrink(),
           Column(
             children: [
-              Text(onBoarding2,
+              Text('onBoarding2'.tr(),
                   style: const TextStyle(
                       color: Colors.white,
                       fontWeight: AppFontWeight.w_700,
@@ -25,7 +25,7 @@ class OnBoarding2 extends StatelessWidget {
               const SpaceHeight(height: 50),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 47),
-                child: Text(onBoarding2des,
+                child: Text('onBoarding2des'.tr(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         color: Colors.white,
@@ -37,7 +37,7 @@ class OnBoarding2 extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(bottom: context.bottom / 9 + 70),
             child: OnBoardingButton(
-                text: next,
+                text: 'next'.tr(),
                 onTap: () => pageController.nextPage(
                     duration: const Duration(milliseconds: 350),
                     curve: Curves.easeInQuart)),

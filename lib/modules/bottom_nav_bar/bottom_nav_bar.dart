@@ -37,7 +37,13 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
     AppIcon.baskets_1,
     AppIcon.accaunt_1
   ];
-  final List<String> _labels = [home, browse, favourite, basket, accaunt];
+  final List<String> _labels = [
+    'home'.tr(),
+    'browse'.tr(),
+    'favourite'.tr(),
+    'basket'.tr(),
+    'accaunt'.tr()
+  ];
 
   @override
   Widget build(BuildContext context) {

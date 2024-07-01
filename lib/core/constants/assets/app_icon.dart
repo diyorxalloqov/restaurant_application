@@ -22,6 +22,10 @@ class AppIcon {
   static const String favourite_red = 'assets/icons/favourite_red.svg';
   static const String current_location = 'assets/icons/current_location.svg';
   static const String location = 'assets/icons/location.svg';
+  static const String help = 'assets/icons/help.svg';
+  static const String lang = 'assets/icons/lang.svg';
+  static const String settings = 'assets/icons/settings.svg';
+  static const String wallet = 'assets/icons/wallet.svg';
 
 
 

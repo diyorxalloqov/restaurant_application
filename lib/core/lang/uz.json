@@ -1,5 +1,10 @@
 {
-    "app_name": "Restaurant"
-
+    "app_name": "Restaurant",
+    "next": "Keyingisi",
+    "start": "Boshlash",
+    "wallet": "Xamyon",
+    "language": "Til",
+    "settings": "Sozlamalar",
+    "help": "Yordam"
 
 }

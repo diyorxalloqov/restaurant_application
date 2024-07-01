@@ -26,11 +26,11 @@ class _LoginPageState extends State<RegisterPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(loginHint, style: mediumStyle),
+                      Text('loginHint'.tr(), style: mediumStyle),
                       const SpaceHeight(height: 40),
-                      TextFormFieldWidget(hintText: nameHint),
+                      TextFormFieldWidget(hintText: 'nameHint'.tr()),
                       const SpaceHeight(height: 10),
-                      TextFormFieldWidget(hintText: emailHint),
+                      TextFormFieldWidget(hintText: 'emailHint'.tr()),
                       const SpaceHeight(height: 10),
                       TextFormFieldWidget(
                           onTap: () {
@@ -38,7 +38,7 @@ class _LoginPageState extends State<RegisterPage> {
                               isShowing = !isShowing;
                             });
                           },
-                          hintText: passwordHint,
+                          hintText: 'passwordHint'.tr(),
                           obscureText: isShowing,
                           suffixIcon: Padding(
                             padding: const EdgeInsets.all(10.0),
@@ -49,7 +49,7 @@ class _LoginPageState extends State<RegisterPage> {
                       InkWell(
                           onTap: () =>
                               Navigator.pushReplacementNamed(context, 'login'),
-                          child: Text("$haveAccaunt - $login",
+                          child: Text("${"haveAccaunt".tr()} - ${"login".tr()}",
                               style: TextStyle(
                                   fontWeight: AppFontWeight.w_700,
                                   fontSize: AppSizes.size_14,
@@ -73,7 +73,7 @@ class _LoginPageState extends State<RegisterPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SvgPicture.asset(AppIcon.google),
-                          Text(googleSign,
+                          Text('googleSign'.tr(),
                               style: TextStyle(
                                   fontWeight: AppFontWeight.w_700,
                                   fontSize: AppSizes.size_16,
@@ -84,19 +84,19 @@ class _LoginPageState extends State<RegisterPage> {
                         ],
                       )),
                   const SpaceHeight(height: 18),
-                  Text(loginDescription, style: smallStyle),
+                  Text('loginDescription'.tr(), style: smallStyle),
                   const SpaceHeight(height: 20),
                   Row(
                     children: [
                       Expanded(child: Divider(color: authDividerColor)),
                       const SpaceWidth(width: 10),
-                      Text(or, style: smallStyle),
+                      Text('or'.tr(), style: smallStyle),
                       const SpaceWidth(width: 10),
                       Expanded(child: Divider(color: authDividerColor))
                     ],
                   ),
                   const SpaceHeight(height: 12),
-                  MainButton(onPressed: () {}, text: register)
+                  MainButton(onPressed: () {}, text: 'register'.tr())
                 ],
               ),
             ),

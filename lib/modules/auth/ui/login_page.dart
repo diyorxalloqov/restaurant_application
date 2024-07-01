@@ -26,9 +26,9 @@ class _LoginPageState extends State<LoginPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(loginHint, style: mediumStyle),
+                      Text('loginHint'.tr(), style: mediumStyle),
                       const SpaceHeight(height: 40),
-                      TextFormFieldWidget(hintText: emailHint),
+                      TextFormFieldWidget(hintText: 'emailHint'.tr()),
                       const SpaceHeight(height: 10),
                       TextFormFieldWidget(
                           onTap: () {
@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                               isShowing = !isShowing;
                             });
                           },
-                          hintText: passwordHint,
+                          hintText: 'passwordHint'.tr(),
                           obscureText: isShowing,
                           suffixIcon: Padding(
                             padding: const EdgeInsets.all(10.0),
@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                       InkWell(
                           onTap: () => Navigator.pushReplacementNamed(
                               context, 'register'),
-                          child: Text("$haveAccaunt - $register",
+                          child: Text("${'haveAccaunt'.tr()} - ${'register'.tr()}",
                               style: TextStyle(
                                   fontWeight: AppFontWeight.w_700,
                                   fontSize: AppSizes.size_14,
@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SvgPicture.asset(AppIcon.google),
-                          Text(googleSign,
+                          Text('googleSign'.tr(),
                               style: TextStyle(
                                   fontWeight: AppFontWeight.w_700,
                                   fontSize: AppSizes.size_16,
@@ -82,13 +82,13 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       )),
                   const SpaceHeight(height: 18),
-                  Text(loginDescription, style: smallStyle),
+                  Text('loginDescription'.tr(), style: smallStyle),
                   const SpaceHeight(height: 20),
                   Row(
                     children: [
                       Expanded(child: Divider(color: authDividerColor)),
                       const SpaceWidth(width: 10),
-                      Text(or, style: smallStyle),
+                      Text('or'.tr(), style: smallStyle),
                       const SpaceWidth(width: 10),
                       Expanded(child: Divider(color: authDividerColor))
                     ],
@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.pushNamedAndRemoveUntil(
                             context, 'bottomNavBar', (route) => false);
                       },
-                      text: login)
+                      text: 'login'.tr())
                 ],
               ),
             ),

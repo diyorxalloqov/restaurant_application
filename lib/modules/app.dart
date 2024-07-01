@@ -1,4 +1,5 @@
 import 'package:restaurant_app/modules/global/imports/app_imports.dart';
+import 'package:restaurant_app/modules/home/bloc/home_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -67,17 +68,20 @@ class _AndroidAppState extends State<AndroidApp> {
       dark: AppTheme().darkMode,
       light: AppTheme().lightMode,
       builder: (ThemeData theme, ThemeData dark) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          darkTheme: dark,
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          theme: theme,
-          themeMode: ThemeMode.system,
-          navigatorKey: App.navigatorKey,
-          initialRoute: '/',
-          onGenerateRoute: RouteList.router.onGenerate,
+        return MultiBlocProvider(
+          providers: [BlocProvider(create: (context) => HomeBloc())],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            darkTheme: dark,
+            theme: theme,
+            locale: context.locale,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            themeMode: ThemeMode.system,
+            navigatorKey: App.navigatorKey,
+            initialRoute: '/',
+            onGenerateRoute: RouteList.router.onGenerate,
+          ),
         );
       },
     );
@@ -100,29 +104,32 @@ class _IosAppState extends State<IosApp> {
         dark: AppTheme().cupertinoDarkMode,
         light: AppTheme().cupertinoLightMode,
         builder: (CupertinoThemeData theme) {
-          return CupertinoApp(
-              debugShowCheckedModeBanner: false,
-              navigatorKey: App.navigatorKey,
-              initialRoute: '/',
-              theme: theme,
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
-              onGenerateRoute: RouteList.router.onGenerate,
-              builder: (context, child) {
-                return UpgradeAlert(
-                  barrierDismissible: false,
-                  showIgnore: false,
-                  showLater: false,
-                  showReleaseNotes: false,
-                  dialogStyle: UpgradeDialogStyle.cupertino,
-                  upgrader: Upgrader(upgraderOS: UpgraderOS()),
-                  navigatorKey: App.navigatorKey,
-                  child: CupertinoPageScaffold(
-                    child: child!,
-                  ),
-                );
-              });
+          return MultiBlocProvider(
+            providers: [BlocProvider(create: (context) => HomeBloc())],
+            child: CupertinoApp(
+                debugShowCheckedModeBanner: false,
+                navigatorKey: App.navigatorKey,
+                initialRoute: '/',
+                theme: theme,
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
+                onGenerateRoute: RouteList.router.onGenerate,
+                builder: (context, child) {
+                  return UpgradeAlert(
+                    barrierDismissible: false,
+                    showIgnore: false,
+                    showLater: false,
+                    showReleaseNotes: false,
+                    dialogStyle: UpgradeDialogStyle.cupertino,
+                    upgrader: Upgrader(upgraderOS: UpgraderOS()),
+                    navigatorKey: App.navigatorKey,
+                    child: CupertinoPageScaffold(
+                      child: child!,
+                    ),
+                  );
+                }),
+          );
         });
   }
 }

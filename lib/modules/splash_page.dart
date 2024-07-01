@@ -28,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(AppImages.splash),
-          Text(appName,
+          Text('appName'.tr(),
               style: TextStyle(
                   fontSize: AppSizes.size_48,
                   fontWeight: AppFontWeight.w_700,

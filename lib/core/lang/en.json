@@ -1,5 +1,5 @@
 {
-    "app_name": "Restaurant",
+    "appName": "Restaurant",
     "loginHint": "Enter your personality",
     "registerHint": "Enter your personality",
     "nameHint": "Please enter your name",
@@ -40,5 +40,10 @@
     "onBoarding4": "Order now!",
     "onBoarding4des": "and become a member in our family",
     "next": "Next",
-    "start": "Start"
+    "start": "Start",
+    "wallet": "Wallet",
+    "language": "Language",
+    "settings": "Settings",
+    "help": "Help"
+
 }
