@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:restaurant_app/modules/global/imports/app_imports.dart';
 
 Color mainColor = const Color(0xff000000);
 Color scaffoldColor = const Color(0xffFFFFFF);
@@ -10,6 +10,7 @@ Color dropDownBorderDarkColor = const Color(0xff595F6B);
 Color filteTabbarColor = const Color(0xffFFFFFF);
 Color filteTabbarDarkColor = const Color(0xff3D3D3D);
 Color expensionTileColor = const Color(0xffFFFFFF);
+Color gridItemBorderColor = const Color(0xffE8E8E8);
 Color expensionTileDarkColor = const Color(0xff3D3D3D);
 Color hintTextColor = const Color(0xffB1B1B4);
 Color textFormFieldFillColor = const Color(0xffEEEEEE);
@@ -54,3 +55,4 @@ Color categoryColorDark = const Color(0xff000000);
 Color itemSubtitleColor = const Color(0xff6B6B6B);
 Color searchIconColor = const Color(0xff000000);
 Color searchIconDarkColor = const Color(0xffFFFFFF);
+Color searchBarColor2 = const Color(0xffEEEEEE);

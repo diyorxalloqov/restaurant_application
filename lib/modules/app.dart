@@ -1,5 +1,4 @@
 import 'package:restaurant_app/modules/global/imports/app_imports.dart';
-import 'package:restaurant_app/modules/home/bloc/home_bloc.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -14,7 +13,7 @@ class App extends StatelessWidget {
     } else if (Platform.isIOS) {
       return const IosApp();
     } else {
-      return const WebApp();
+      return const AndroidApp();
     }
   }
 }

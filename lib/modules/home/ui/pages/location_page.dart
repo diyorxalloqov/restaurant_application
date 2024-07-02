@@ -124,12 +124,12 @@ class _LocationPageState extends State<LocationPage> {
                       trailing: GestureDetector(
                         onTap: () async {
                           setState(() {
-                            isCurrentLocation = !isCurrentLocation;
                             selectedLocationIndex = -1;
-                            if (isCurrentLocation == true) {
+                            if (isCurrentLocation == false) {
                               context.read<HomeBloc>().add(GetLocationIp());
                               context.read<HomeBloc>().add(GetLocation());
                             }
+                            isCurrentLocation = true;
                           });
                           await StorageRepository.putBool(
                               Keys.isCurrentlocation, isCurrentLocation);

@@ -44,6 +44,9 @@
     "wallet": "Wallet",
     "language": "Language",
     "settings": "Settings",
-    "help": "Help"
+    "help": "Help",
+    "searchHint": "What are you craving?",
+    "searchPageHint": "Food, shopping, drinks, etc",
+    "allCategories": "All categories"
 
 }

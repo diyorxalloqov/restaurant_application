@@ -29,6 +29,9 @@ class AppTheme {
       fontWeight: AppFontWeight.w_400,
       fontSize: AppSizes.size_12,
     )),
+    searchBarTheme: const SearchBarThemeData(
+      backgroundColor: WidgetStatePropertyAll<Color>(Colors.white)
+    ),
     inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         focusedBorder: OutlineInputBorder(
@@ -91,6 +94,9 @@ class AppTheme {
             borderRadius: BorderRadius.circular(8)),
         filled: true,
         fillColor: textFormFieldFillDarkColor),
+    searchBarTheme: const SearchBarThemeData(
+        backgroundColor: WidgetStatePropertyAll<Color>(Colors.black)
+    ),
     cardTheme: CardTheme(color: cardDarkColor),
     bottomNavigationBarTheme:
         BottomNavigationBarThemeData(backgroundColor: bottomNavbarBlackColor),
