@@ -56,3 +56,4 @@ Color itemSubtitleColor = const Color(0xff6B6B6B);
 Color searchIconColor = const Color(0xff000000);
 Color searchIconDarkColor = const Color(0xffFFFFFF);
 Color searchBarColor2 = const Color(0xffEEEEEE);
+Color basketDescColor = const Color(0xff545454);

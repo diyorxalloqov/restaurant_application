@@ -20,7 +20,7 @@ class SearchPage extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text('allCategories'.tr(),
               style: const TextStyle(
                   fontWeight: AppFontWeight.w_500, fontSize: AppSizes.size_24)),

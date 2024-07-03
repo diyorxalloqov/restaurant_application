@@ -30,8 +30,7 @@ class AppTheme {
       fontSize: AppSizes.size_12,
     )),
     searchBarTheme: const SearchBarThemeData(
-      backgroundColor: WidgetStatePropertyAll<Color>(Colors.white)
-    ),
+        backgroundColor: WidgetStatePropertyAll<Color>(Colors.white)),
     inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         focusedBorder: OutlineInputBorder(
@@ -55,11 +54,11 @@ class AppTheme {
     }),
     cardTheme: CardTheme(color: cardColor),
     tabBarTheme: TabBarTheme(
-      indicatorSize: TabBarIndicatorSize.tab,
-      dividerColor: Colors.transparent,
-      unselectedLabelColor: tabLabelUnselectedColor,
-      labelColor: tabLabelSelectedColor,
-    ),
+        indicatorSize: TabBarIndicatorSize.tab,
+        dividerColor: Colors.transparent,
+        unselectedLabelColor: tabLabelUnselectedColor,
+        labelColor: tabLabelSelectedColor),
+    bottomSheetTheme: BottomSheetThemeData(backgroundColor: bottomSheetColor),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -83,6 +82,10 @@ class AppTheme {
       unselectedLabelColor: tabLabelUnselectedDarkColor,
       labelColor: tabLabelSelectedDarkColor,
     ),
+
+    bottomSheetTheme:
+        BottomSheetThemeData(backgroundColor: bottomSheetDarkColor),
+
     fontFamily: AppfontFamily.inter,
     inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
@@ -95,8 +98,7 @@ class AppTheme {
         filled: true,
         fillColor: textFormFieldFillDarkColor),
     searchBarTheme: const SearchBarThemeData(
-        backgroundColor: WidgetStatePropertyAll<Color>(Colors.black)
-    ),
+        backgroundColor: WidgetStatePropertyAll<Color>(Colors.black)),
     cardTheme: CardTheme(color: cardDarkColor),
     bottomNavigationBarTheme:
         BottomNavigationBarThemeData(backgroundColor: bottomNavbarBlackColor),

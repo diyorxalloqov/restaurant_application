@@ -1,6 +1,5 @@
 import 'package:restaurant_app/modules/global/imports/app_imports.dart';
 import 'package:restaurant_app/modules/home/ui/widgets/category_widget.dart';
-import 'package:restaurant_app/modules/home/ui/widgets/delivery_item.dart';
 import 'package:restaurant_app/modules/home/ui/widgets/page_view_widget.dart';
 
 class Delivery extends StatelessWidget {
@@ -37,9 +36,7 @@ class Delivery extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: DeliveryItem(
-
-                ),
+                child: DeliveryItem(),
               ),
             ],
           );

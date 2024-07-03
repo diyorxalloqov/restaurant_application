@@ -47,6 +47,12 @@
     "help": "Help",
     "searchHint": "What are you craving?",
     "searchPageHint": "Food, shopping, drinks, etc",
-    "allCategories": "All categories"
+    "allCategories": "All categories",
+    "searchFavouriteHint": "search to favourited item",
+    "carts": "Carts",
+    "basketEmpty": "Add items to start a basket",
+    "basketEmptyDesc": "Once you add items from a restuarant or\nstore, your basket will appear here",
+    "startShopping": "Start Shopping",
+    "filters": "All filters"
 
 }

@@ -1,4 +1,5 @@
 import 'package:restaurant_app/modules/global/imports/app_imports.dart';
+import 'package:restaurant_app/modules/home/ui/widgets/show_filter_bottom_sheet.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -57,7 +58,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       const SpaceWidth(width: 20),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: ()=>showFilterBottomSheet(context),
                           icon: SvgPicture.asset(AppIcon.filter,
                               color: context.isDark ? Colors.white : null)),
                       const SpaceWidth(width: 5),

@@ -12,7 +12,9 @@ class AppIcon {
   static const String favourite = 'assets/icons/favourite.svg';
   static const String baskets_1 = 'assets/icons/basket_1.svg';
   static const String baskets = 'assets/icons/basket.svg';
+  static const String cancel = 'assets/icons/cancel.svg';
   static const String accaunt_1 = 'assets/icons/accaunt_1.svg';
+  static const String default_filter = 'assets/icons/default_filter.svg';
   static const String accaunt = 'assets/icons/accaunt.svg';
   static const String filter = 'assets/icons/filter.svg';
   static const String schedule = 'assets/icons/schedule.svg';

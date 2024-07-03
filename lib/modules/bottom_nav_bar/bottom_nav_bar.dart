@@ -14,13 +14,25 @@ class BottomNavBarPage extends StatefulWidget {
 
 class _BottomNavBarPageState extends State<BottomNavBarPage> {
   int currentIndex = 0;
-  final List<Widget> _screens = const [
-    HomePage(),
-    SearchPage(),
-    FavouritePage(),
-    BasketPage(),
-    AccauntPage()
-  ];
+  late List<Widget> _screens;
+
+  void _onTapCallback() {
+    setState(() {
+      currentIndex = 0;
+    });
+  }
+
+  @override
+  void initState() {
+    _screens = [
+      const HomePage(),
+      const SearchPage(),
+      const FavouritePage(),
+      BasketPage(onTap: _onTapCallback),
+      const AccauntPage()
+    ];
+    super.initState();
+  }
 
   final List<String> activeIcons = const [
     AppIcon.home,
